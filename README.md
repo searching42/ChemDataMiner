@@ -3,7 +3,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 [![RDKit](https://img.shields.io/badge/Chemistry-RDKit-green)](https://www.rdkit.org/)
-[![Powered by](https://img.shields.io/badge/LLM-DeepSeek-blueviolet)](https://www.deepseek.com/)
 
 **ChemDataMiner** 是一个模块化的 AI for Science (AI4S) 数据挖掘流水线。它致力于从非结构化的化学文献（PDF）中自动化提取结构化的分子数据（SMILES）及其物理化学性质（如 HOMO/LUMO 能级、光伏参数等）。
 

@@ -206,8 +206,19 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
+# VS Code settings
 .vscode/
 
+# Conda environment files
 .conda/
 envs/
 *.conda
+
+# Local configuration
+.env
+
+# Data folders
+data/
+*.csv
+*.jsonl
+*.txt

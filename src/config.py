@@ -28,6 +28,11 @@ for p in [DATA_DIR, PDF_DIR, RAW_DIR, PROCESSED_DIR, TEMP_STAGING_DIR]:
 FILES = {
     # Step 1 输出：清洗合并后的表格文本
     "tables_final": PROCESSED_DIR / "tables_final.txt",
+
+    # Step 1 输出（可选）：规范化后的表格/训练样本
+    "tables_normalized": PROCESSED_DIR / "tables_normalized.jsonl",
+    "tables_long": PROCESSED_DIR / "tables_long.jsonl",
+    "step1_report": PROCESSED_DIR / "step1_report.json",
     
     # Step 2 输出：准备好喂给 LLM 的 JSONL
     "llm_input": PROCESSED_DIR / "llm_process.jsonl",
@@ -66,7 +71,7 @@ PROPERTY_MAP = {
     # 能级
     "HOMO": "HOMO", "E_HOMO": "HOMO", "EHOMO": "HOMO", "IP": "HOMO", "HOMO energy": "HOMO",
     "LUMO": "LUMO", "E_LUMO": "LUMO", "ELUMO": "LUMO", "EA": "LUMO", "LUMO energy": "LUMO",
-    "Gap": "Gap", "Eg": "Gap", "Band Gap": "Gap", "H-L Gap": "Gap", "Delta E": "Gap",
+    "Gap": "Gap", "GAP": "Gap", "Eg": "Gap", "Band Gap": "Gap", "H-L Gap": "Gap", "Delta E": "Gap",
     # 产率
     "Yield": "Yield", "Chemical Yield": "Yield", "Isolated Yield": "Yield",
     # 光伏参数
@@ -76,7 +81,27 @@ PROPERTY_MAP = {
     "FF": "FF",
     # 物理性质
     "Dipole": "Dipole_Moment", "Dipole Moment": "Dipole_Moment",
-    "Solubility": "LogS", "LogP": "LogP"
+    "Solubility": "LogS", "LogS": "LogS",
+    "LogP": "LogP", "cLogP": "LogP", "XlogP": "LogP",
+
+    # --- Extended targets (for table normalization / model training) ---
+    "IC50": "IC50", "IC 50": "IC50",
+    "Dipole_Moment": "Dipole_Moment",
+    "Isotropic Polarizability": "Isotropic_Polarizability",
+    "Polarizability": "Isotropic_Polarizability",
+    "Internal Energy": "Internal_Energy",
+    "Enthalpy": "Enthalpy",
+    "Gibbs Free Energy": "Gibbs_Free_Energy",
+    "Hydration Free Energy": "Hydration_Free_Energy",
+    "Toxicity": "Toxicity",
+    "BBB": "BBB_Permeability", "BBB Permeability": "BBB_Permeability",
+    "CYP450": "CYP450", "CYP 450": "CYP450",
+    "Total Energy": "Total_Energy",
+    "Atomic Forces": "Atomic_Forces",
+    "Virial": "Virial_Stress_Tensor", "Stress Tensor": "Virial_Stress_Tensor",
+    "Dielectric Constant": "Dielectric_Constant",
+    "Electron Density": "Electron_Density",
+    "Charge Density": "Charge_Density",
 }
 
 # Step 2: 上下文评分关键词 (用于寻找分子定义的段落)
